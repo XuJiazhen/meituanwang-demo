@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  background-color: #F8F8F8;
+  font-family: "-apple-system","BlinkMacSystemFont","Roboto","Helvetica Neue","MIcrosoft YaHei",sans-serif !important;
+}
+
+.el-header,
+.el-main,
+.el-footer,
+ul,
+dl,
+dd,
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+img {
+  border: 0;
+}
+input,
+button {
+  outline: none;
+}
+li {
+  list-style: none;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+/*
+.clearfix:after,.clearfix:before{
+  content: "";
+  display: table;
+}
+.clearfix:after{
+  clear: both;
+}
+*/
