@@ -1,19 +1,19 @@
 <template>
-  <div class="top-container">
-    <top-userinfo class="top-userinfo"></top-userinfo>
-    <top-navbar class="top-navbar"></top-navbar>
+  <div class="top-container clearfix">
+    <m-info class="m-info"></m-info>
+    <m-nav class="m-nav"></m-nav>
   </div>
 </template>
 
 <script>
-import TopUserinfo from './top-userInfo'
-import TopNavbar from './top-navbar'
+import MInfo from './MInfo'
+import MNav from './MNav'
 
 export default {
   name: 'TopIndex',
   components: {
-    TopUserinfo,
-    TopNavbar
+    MInfo,
+    MNav
   }
 }
 </script>
@@ -25,11 +25,11 @@ export default {
   width: 1190px;
   margin: 0 auto;
   height: 40px;
-  .top-userinfo {
+  .m-info {
     float: left;
     padding-top: 11px;
   }
-  .top-navbar {
+  .m-nav {
     float: right;
   }
   a {

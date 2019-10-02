@@ -1,6 +1,6 @@
 <template>
-  <div class="userinfo-container">
-    <div class="city-container">
+  <div>
+    <div class="city">
       <span class="el-icon-location"></span>
       <span>{{ city }}</span>
       <a href="/" class="changeCity">切换城市</a>
@@ -12,7 +12,7 @@
         ]
       </div>
     </div>
-    <div class="user-container">
+    <div class="user">
       <template v-if="user">
         欢迎您，<nuxt-link to="/">{{ user }}</nuxt-link>
       </template>
@@ -26,22 +26,22 @@
 
 <script>
 export default {
-  name: 'TopCity',
+  name: 'MInfo',
   data() {
     return {
       city: '成都',
-      user: 'AAA'
+      user: ''
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.userinfo-container {
+div {
   display: flex;
   align-items: center;
   color: #666;
-  .city-container {
+  .city {
     display: flex;
     align-items: center;
     color: #666;
@@ -53,9 +53,17 @@ export default {
       margin: 0 4px;
       padding: 0 2px;
     }
+    .near-city {
+      a {
+        margin: 0 4px;
+      }
+    }
   }
-  .user-container {
+  .user {
     margin-left: 15px;
+    a {
+      margin-left: 10px;
+    }
   }
 }
 </style>

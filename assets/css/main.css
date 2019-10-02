@@ -1,29 +1,56 @@
+@font-face {
+  font-family: 'meituan';
+  src: url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.eot?t=1503027869484);
+  src: url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.eot?t=1503027869484#iefix) format('embedded-opentype'),
+    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.woff?t=1503027869484) format('woff'),
+    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.ttf?t=1503027869484) format('truetype'),
+    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.svg?t=1503027869484#home-category-iconfont) format('svg')
+}
+
+@font-face {
+  font-family: 'iconfont';
+  /* project id 1442581 */
+  src: url('//at.alicdn.com/t/font_1442581_tuo18cyw0vl.eot');
+  src: url('//at.alicdn.com/t/font_1442581_tuo18cyw0vl.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1442581_tuo18cyw0vl.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1442581_tuo18cyw0vl.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1442581_tuo18cyw0vl.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1442581_tuo18cyw0vl.svg#iconfont') format('svg');
+}
+
 body {
   margin: 0;
   background-color: #F8F8F8;
-  font-family: "-apple-system","BlinkMacSystemFont","Roboto","Helvetica Neue","MIcrosoft YaHei",sans-serif !important;
+  font-family: "-apple-system", "BlinkMacSystemFont", "Roboto", "Helvetica Neue", "MIcrosoft YaHei", sans-serif !important;
 }
 
-.el-header,
-.el-main,
-.el-footer,
 ul,
 dl,
 dd,
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
   padding: 0;
 }
+
 img {
   border: 0;
 }
+
 input,
 button {
   outline: none;
 }
+
 li {
   list-style: none;
 }
+
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -32,6 +59,16 @@ li {
   height: 0;
   clear: both;
 }
+
+.shadow {
+  transition: box-shadow 0.5s;
+}
+
+.shadow:hover {
+  box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.5s;
+}
+
 /*
 .clearfix:after,.clearfix:before{
   content: "";
@@ -41,3 +78,29 @@ li {
   clear: both;
 }
 */
+.el-carousel__container {
+  height: 240px;
+}
+
+.el-carousel__indicators--outside {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 10px;
+}
+
+.el-carousel__indicator--horizontal {
+  height: 2px;
+  margin-right: 10px;
+  padding: 0;
+}
+
+.el-carousel__arrow {
+  background: #333;
+  opacity: 0.7;
+}
+
+.el-carousel__arrow i {
+  color: #fff;
+  font-size: 20px;
+}

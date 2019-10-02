@@ -1,12 +1,20 @@
 <template>
-  <ul class="navbar-container">
+  <ul>
     <li class="list">
       <nuxt-link to="/">我的美团</nuxt-link>
       <dl class="pop-list">
-        <dd><nuxt-link to="/">我的订单</nuxt-link></dd>
-        <dd><nuxt-link to="/">我的收藏</nuxt-link></dd>
-        <dd><nuxt-link to="/">抵用券</nuxt-link></dd>
-        <dd><nuxt-link to="/">账户设置</nuxt-link></dd>
+        <dd>
+          <nuxt-link to="/">我的订单</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">我的收藏</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">抵用券</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">账户设置</nuxt-link>
+        </dd>
       </dl>
     </li>
     <li class="list no-list">
@@ -15,21 +23,41 @@
     <li class="list">
       <nuxt-link to="/">商家中心</nuxt-link>
       <dl class="pop-list center">
-        <dd><nuxt-link to="/">登录商家中心</nuxt-link></dd>
-        <dd><nuxt-link to="/">美团只能银行</nuxt-link></dd>
-        <dd><nuxt-link to="/">我想合作</nuxt-link></dd>
-        <dd><nuxt-link to="/">手机免费开店</nuxt-link></dd>
-        <dd><nuxt-link to="/">餐饮代理商招募</nuxt-link></dd>
-        <dd><nuxt-link to="/">商家申请开票</nuxt-link></dd>
-        <dd><nuxt-link to="/">免费合作美团排队</nuxt-link></dd>
+        <dd>
+          <nuxt-link to="/">登录商家中心</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">美团只能银行</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">我想合作</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">手机免费开店</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">餐饮代理商招募</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">商家申请开票</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">免费合作美团排队</nuxt-link>
+        </dd>
       </dl>
     </li>
     <li class="list">
       <nuxt-link to="/">美团规则</nuxt-link>
       <dl class="pop-list">
-        <dd><nuxt-link to="/">规则中心</nuxt-link></dd>
-        <dd><nuxt-link to="/">规则目录</nuxt-link></dd>
-        <dd><nuxt-link to="/">规则评议院</nuxt-link></dd>
+        <dd>
+          <nuxt-link to="/">规则中心</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">规则目录</nuxt-link>
+        </dd>
+        <dd>
+          <nuxt-link to="/">规则评议院</nuxt-link>
+        </dd>
       </dl>
     </li>
     <li class="list">
@@ -115,12 +143,12 @@
 
 <script>
 export default {
-  name: 'TopNavbar'
+  name: 'MNav'
 }
 </script>
 
 <style scoped lang="scss">
-.navbar-container {
+ul {
   .list {
     float: left;
     position: relative;
