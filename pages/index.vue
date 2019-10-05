@@ -25,7 +25,8 @@ export default {
     position: relative;
   }
   .m-scenes {
-    margin: 40px auto;
+    margin: 0 auto;
+    padding: 40px 0;
   }
 }
 </style>

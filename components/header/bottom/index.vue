@@ -23,12 +23,10 @@ export default {
 .btom-container {
   position: relative;
   font-size: 12px;
-  background: #fff;
   padding-bottom: 35px;
   .btom-inner {
     width: 1190px;
     margin: 0 auto;
-    background: #fff;
     .m-title,
     .m-search {
       float: left;
