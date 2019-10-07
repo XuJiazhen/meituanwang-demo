@@ -10,16 +10,15 @@ import Email from '../dbs/config'
 import Passport from './utils/passport' // 使用 passport 进行登录验证
 import axios from './utils/axios'
 
-// eslint-disable-next-line import/no-mutable-exports
-let router = new Router({
+const router = new Router({
   prefix: '/user'
 })
 
-let Store = new Redis().client
+const Store = new Redis().client
 
 // 用户注册接口逻辑
 router.post('/signup', async (ctx) => {
-  let { username, password, email, code } = ctx.request.body
+  const { username, password, email, code } = ctx.request.body
 
   // 注册验证第一步：用户注册时验证码验证
   // 如果验证码存在，则判断当前验证码与数据库中所存储的验证码是否相同，否则进行拦截，并返回消息“请填写验证码”
@@ -27,8 +26,8 @@ router.post('/signup', async (ctx) => {
   // 如果到期，则返回消息“验证码已经过期，请重新尝试”，并失败
   if (code) {
     // 获取 Redis 数据库中所存储的验证码与有效时间
-    let saveCode = await Store.hget(`nodemail:${username}`, 'code')
-    let saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
+    const saveCode = await Store.hget(`nodemail:${username}`, 'code')
+    const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
     if (code === saveCode) {
       if (new Date().getTime() - saveExpire > 0) {
         ctx.body = {
@@ -65,14 +64,14 @@ router.post('/signup', async (ctx) => {
   }
 
   // 开始把用户信息写入数据库
-  let newuser = await User.create({
+  const newuser = await User.create({
     username,
     password,
     email
   })
   // 验证是否写入成功，是则进行登录尝试，否则返回消息”注册失败“
   if (newuser) {
-    let res = await axios.post('/users/signin', {
+    const res = await axios.post('/user/signin', {
       username,
       password
     })
@@ -117,7 +116,7 @@ router.post('/signin', async (ctx, next) => {
     } else {
       ctx.body = {
         code: 1,
-        msg: info
+        msg: `${info}`
       }
     }
   })(ctx, next)
@@ -126,8 +125,8 @@ router.post('/signin', async (ctx, next) => {
 // 用户登录时验证码验证逻辑
 // 如果未到过期时间多次请求，进行拦截并返回消息“请求过于频繁，请一分钟后再尝试”，并失败
 router.post('/verify', async (ctx, next) => {
-  let username = ctx.request.body.username
-  let saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
+  const username = ctx.request.body.username
+  const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
   if (saveExpire && new Date().getTime() - saveExpire < 0) {
     ctx.body = {
       code: -1,
@@ -136,18 +135,18 @@ router.post('/verify', async (ctx, next) => {
     return false
   }
   // 邮件发送方信息
-  let transporter = nodemailer.createTransport({
-    // host: Email.smtp.host,
-    // port: 587,
-    // secure: false,
-    service: 'qq',
+  const transporter = nodemailer.createTransport({
+    host: Email.smtp.host,
+    port: 587,
+    secure: false,
+    // service: 'qq',
     auth: {
       user: Email.smtp.user,
       pass: Email.smtp.pass
     }
   })
   // 邮件接收方信息
-  let reciver = {
+  const reciver = {
     // code: Email.smtp.code(),
     code: Math.random()
       .toString(16)
@@ -158,7 +157,7 @@ router.post('/verify', async (ctx, next) => {
     user: ctx.request.body.username
   }
   // 邮件主体
-  let mailOptions = {
+  const mailOptions = {
     from: `"认证邮件" <${Email.smtp.user}>`,
     to: reciver.email,
     subject: '《慕课网高仿美团网全栈实战》注册码',
@@ -190,7 +189,7 @@ router.post('/verify', async (ctx, next) => {
 })
 
 // 用户退出接口逻辑
-router.get('exit', async (ctx, next) => {
+router.get('/exit', async (ctx, next) => {
   await ctx.logout()
   if (!ctx.isAuthenticated()) {
     ctx.body = {
@@ -205,7 +204,7 @@ router.get('exit', async (ctx, next) => {
 
 // 获取用户信息
 // 如果用户已经登录，则返回用户名和邮箱，否则返回空
-router.get('getUser', (ctx, next) => {
+router.get('/getUser', (ctx, next) => {
   if (ctx.isAuthenticated()) {
     const { username, email } = ctx.session.passport.user
     ctx.body = {

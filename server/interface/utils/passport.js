@@ -1,11 +1,11 @@
 /* eslint-disable prefer-const */
 import passport from 'koa-passport'
 import LocalStrategy from 'passport-local'
-import User from '../../dbs/models/user'
+import UserModel from '../../dbs/models/user'
 
 passport.use(
   new LocalStrategy(async function(username, password, done) {
-    let result = await User.findOne({
+    let result = await UserModel.findOne({
       username
     })
 

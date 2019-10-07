@@ -6,7 +6,11 @@ import Redis from 'koa-redis'
 import json from 'koa-json' // 美化 json
 import dbConfig from './dbs/config'
 import passport from './interface/utils/passport'
+
+// Interface
 import user from './interface/user'
+import geo from './interface/geo'
+import search from './interface/search'
 
 const Koa = require('koa')
 const consola = require('consola')
@@ -19,8 +23,8 @@ app.keys = ['mt', 'keyskeys']
 app.proxy = true
 app.use(
   session({
-    prefix: 'mt',
-    key: 'mt:uid',
+    key: 'mt',
+    prefix: 'mt:uid',
     store: new Redis()
   })
 )
@@ -60,8 +64,10 @@ async function start() {
   } else {
     await nuxt.ready()
   }
-  // 导入 user 路由，需要再此处导入，以免出错
+  // 导入路由，需要再此处导入，以免出错
   app.use(user.routes()).use(user.allowedMethods())
+  app.use(geo.routes()).use(geo.allowedMethods())
+  app.use(search.routes()).use(search.allowedMethods())
 
   app.use((ctx) => {
     ctx.status = 200

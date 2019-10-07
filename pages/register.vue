@@ -113,12 +113,12 @@ export default {
     // 需要获取表单的 name 和 email 字段是否通过验证，是则用 namePass 和 emailPass 进行存储
     // 如果昵称和邮箱通过验证，则向 /user/verify 接口发起post请求，并传递参数昵称和邮箱
     // 请求成功后使用 .then() 拿到响应体，响应体对应 user 接口 /verify，
-    // 也可以使用 async 和 await 的方式（暂时不知道怎样写）
+    // 也可以使用 async 和 await 的方式（在声明函数前就使用async表明，其内部可以使用await）
     // 使用解构赋值的方式拿到响应体中 status 和 data 变量
     // 需要判断 status 是否等于 200 以及 data 是否存在，以及 data.code 是否等于 0
     // 都为是，则表示请求成功，如果成功就要开始 expire 倒计时，我设置的是 60 秒的过期时间
     // 否则在消息框给出服务端也就是 /user/verify 接口给出的响应消息
-    sendCode() {
+    /* async */ sendCode() {
       const self = this
       let namePass
       let emailPass
@@ -137,6 +137,8 @@ export default {
       // 当昵称和邮箱通过验证后执行后面的操作，这里之所以取反，
       // 是因为 validateField() 的回调函数中参数 valid 有值会返回 false，没值才返回 true
       if (!namePass && !emailPass) {
+        // const {status, data} = await self.$axios.post('/user/verify', {username,email})
+        // if (status, data) ......
         self.$axios
           .post('/user/verify', {
             username: encodeURIComponent(self.ruleForm.name),
@@ -168,7 +170,7 @@ export default {
       const self = this
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
-          this.$axios
+          self.$axios
             .post('/user/signup', {
               username: window.encodeURIComponent(self.ruleForm.name),
               // 使用 MD5 验证后会得到一个数组，所以需要转换为字符串

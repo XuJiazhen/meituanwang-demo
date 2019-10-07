@@ -2,7 +2,7 @@
   <div>
     <div class="city">
       <span class="el-icon-location"></span>
-      <span>{{ city }}</span>
+      <span>{{ $store.state.geo.position.city }}</span>
       <a href="/" class="changeCity">切换城市</a>
       <div class="near-city">
         [
@@ -14,10 +14,18 @@
     </div>
     <div class="user">
       <template v-if="user">
-        欢迎您，<nuxt-link to="/">{{ user }}</nuxt-link>
+        欢迎您，<nuxt-link to="/" style="margin-left: 0; margin-right: 5px;">{{
+          user
+        }}</nuxt-link>
+        [<nuxt-link to="/exit" style="margin-left: 0;">退出</nuxt-link>]
       </template>
       <template v-else>
-        <nuxt-link to="/" class="active">立即登录</nuxt-link>
+        <nuxt-link
+          to="/login"
+          class="active"
+          style="margin-left: 0; margin-right: 5px;"
+          >立即登录</nuxt-link
+        >
         <nuxt-link to="/register">注册</nuxt-link>
       </template>
     </div>
@@ -29,8 +37,16 @@ export default {
   name: 'MInfo',
   data() {
     return {
-      city: '成都',
       user: ''
+    }
+  },
+  async mounted() {
+    const {
+      status,
+      data: { user }
+    } = await this.$axios.get('/user/getUser')
+    if (status === 200) {
+      this.user = user
     }
   }
 }

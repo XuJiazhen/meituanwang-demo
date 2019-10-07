@@ -23,9 +23,6 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.index-header {
-  box-shadow: 0 2px 27px 0 rgba(0, 0, 0, 0.1);
-}
 .index-main {
   background: #f8f8f8;
 }

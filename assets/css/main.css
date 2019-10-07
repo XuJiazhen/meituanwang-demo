@@ -18,6 +18,17 @@
     url('//at.alicdn.com/t/font_1442581_tuo18cyw0vl.svg#iconfont') format('svg');
 }
 
+@font-face {
+  font-family: 'iconfont-login';
+  /* project id 1444768 */
+  src: url('//at.alicdn.com/t/font_1444768_ca6q3gsy7qd.eot');
+  src: url('//at.alicdn.com/t/font_1444768_ca6q3gsy7qd.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1444768_ca6q3gsy7qd.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1444768_ca6q3gsy7qd.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1444768_ca6q3gsy7qd.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1444768_ca6q3gsy7qd.svg#iconfont') format('svg');
+}
+
 body {
   margin: 0;
   background: #fff;

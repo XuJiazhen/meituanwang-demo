@@ -8,13 +8,14 @@
         placeholder="搜索商家或地点"
         @focus="focus"
         @blur="blur"
+        @input="input"
       />
       <button class="search-btn">
         <span class="el-icon-search"></span>
       </button>
     </div>
     <div class="search-suggest">
-      <div v-if="isNoinput" class="suggest-box noinput">
+      <div v-show="isNoinput" class="suggest-box noinput">
         <h6>热门搜索</h6>
         <div>
           <a href="/">大熊猫繁育研究基地</a>
@@ -23,35 +24,33 @@
           <a href="/">贤合庄卤味火锅</a>
         </div>
       </div>
-      <div v-if="isInputing" class="suggest-box inputing">
+      <div v-show="isInputing" class="suggest-box inputing">
         <ul>
-          <li><a href="/">AAA</a></li>
-          <li><a href="/">BBB</a></li>
-          <li><a href="/">CCC</a></li>
-          <li><a href="/">AAA</a></li>
-          <li><a href="/">BBB</a></li>
-          <li><a href="/">CCC</a></li>
+          <li v-for="(item, index) in searchList" :key="index">
+            <a href="/">{{ item.name }}</a>
+          </li>
         </ul>
       </div>
     </div>
     <div class="search-hotword">
-      <div class="hotword">
-        <a href="/">大熊猫繁育研究基地</a>
-        <a href="/">成都欢乐谷</a>
-        <a href="/">成都武侯祠博物馆</a>
-        <a href="/">贤合庄卤味火锅</a>
-        <a href="/">成都海昌极地海洋公园</a>
-      </div>
+      <a href="/">大熊猫繁育研究基地</a>
+      <a href="/">成都欢乐谷</a>
+      <a href="/">成都武侯祠博物馆</a>
+      <a href="/">贤合庄卤味火锅</a>
+      <a href="/">成都海昌极地海洋公园</a>
+      <a href="/">成都海昌极地海洋公园</a>
     </div>
   </div>
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   name: 'MSearch',
   data() {
     return {
       searchText: '',
+      searchList: [],
       isFocus: false
     }
   },
@@ -71,7 +70,22 @@ export default {
       setTimeout(() => {
         this.isFocus = false
       }, 100)
-    }
+    },
+    // 使用 lodash 库的延时函数 debounce 来延时搜索，避免一输入内容就立即发送请求
+    input: _.debounce(async function() {
+      const self = this
+      const city = self.$store.state.geo.position.city.replace('市', '')
+      self.searchList = []
+      const {
+        data: { top }
+      } = await self.$axios('/search/top', {
+        params: {
+          input: self.searchText,
+          city
+        }
+      })
+      self.searchList = top.slice(0, 10)
+    }, 300)
   }
 }
 </script>
@@ -124,21 +138,46 @@ div {
     font-size: 12px;
     text-align: left;
     .suggest-box {
-      padding: 10px;
-      h6 {
-        padding-bottom: 5px;
-      }
       div {
         width: auto;
         padding-top: 5px;
         margin-bottom: 5px;
       }
-      a {
-        color: #666;
-        margin-right: 5px;
+      &.noinput {
+        h6 {
+          padding-top: 9px;
+          padding-left: 10px;
+          color: #999;
+        }
+        div {
+          box-sizing: border-box;
+          padding-left: 10px;
+          padding-bottom: 8px;
+          a {
+            color: #666;
+            margin-right: 10px;
+            margin-bottom: 3px;
+            display: inline-block;
+            &:hover {
+              color: #fe8c00;
+            }
+          }
+        }
       }
-      a:hover {
-        color: #fe8c00;
+      &.inputing {
+        a {
+          padding: 3px 10px;
+          color: #333;
+          line-height: 1.6;
+          font-size: 12px;
+          width: 100%;
+          display: block;
+          box-sizing: border-box;
+          &:hover {
+            color: #fe8c00;
+            background: #f8f8f8;
+          }
+        }
       }
     }
   }
@@ -146,10 +185,15 @@ div {
     box-sizing: border-box;
     width: 550px;
     text-align: center;
+    box-sizing: border-box;
+    height: 25px;
+    overflow: hidden;
     padding-top: 8px;
+    padding-left: 8px;
     a {
       color: #999;
-      margin: 0 3px;
+      margin-right: 10px;
+      margin-bottom: 3px;
     }
     a:hover {
       color: #fe8c00;

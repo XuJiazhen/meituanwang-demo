@@ -24,6 +24,7 @@ export default {
   position: relative;
   font-size: 12px;
   padding-bottom: 35px;
+  box-shadow: 0 15px 27px -15px rgba(0, 0, 0, 0.1);
   .btom-inner {
     width: 1190px;
     margin: 0 auto;
