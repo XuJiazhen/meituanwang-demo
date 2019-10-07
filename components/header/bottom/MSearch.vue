@@ -18,10 +18,12 @@
       <div v-show="isNoinput" class="suggest-box noinput">
         <h6>热门搜索</h6>
         <div>
-          <a href="/">大熊猫繁育研究基地</a>
-          <a href="/">成都欢乐谷</a>
-          <a href="/">成都武侯祠博物馆</a>
-          <a href="/">贤合庄卤味火锅</a>
+          <a
+            v-for="(item, index) in $store.state.city.hotPlace.slice(0, 4)"
+            :key="index"
+            href="/"
+            >{{ item.name }}</a
+          >
         </div>
       </div>
       <div v-show="isInputing" class="suggest-box inputing">
@@ -145,14 +147,13 @@ div {
       }
       &.noinput {
         h6 {
-          padding-top: 9px;
+          padding-top: 10px;
           padding-left: 10px;
           color: #999;
         }
         div {
           box-sizing: border-box;
-          padding-left: 10px;
-          padding-bottom: 8px;
+          padding: 8px 0 8px 10px;
           a {
             color: #666;
             margin-right: 10px;

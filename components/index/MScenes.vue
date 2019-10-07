@@ -4,25 +4,33 @@
       <dt class="nav-item title">
         有格调
       </dt>
-      <dd class="nav-item" :class="{ active: curType === 'all' }" type="all">
+      <dd
+        class="nav-item"
+        keyword="景点"
+        :class="{ active: curType === 'all' }"
+        type="all"
+      >
         全部
       </dd>
       <dd
         class="nav-item"
-        :class="{ active: curType === 'appointment' }"
-        type="appointment"
+        keyword="美食"
+        :class="{ active: curType === 'part' }"
+        type="part"
       >
         约会聚餐
       </dd>
       <dd
         class="nav-item"
-        :class="{ active: curType === 'beauty' }"
-        type="beauty"
+        keyword="丽人"
+        :class="{ active: curType === 'spa' }"
+        type="spa"
       >
         丽人SPA
       </dd>
       <dd
         class="nav-item"
+        keyword="电影"
         :class="{ active: curType === 'movie' }"
         type="movie"
       >
@@ -30,26 +38,28 @@
       </dd>
       <dd
         class="nav-item"
+        keyword="旅游"
         :class="{ active: curType === 'travel' }"
         type="travel"
       >
         品质出游
       </dd>
     </dl>
+
     <div class="scenes-content clearfix">
       <a
-        v-for="(item, index) in curContent.list"
+        v-for="(item, index) in curList"
         :key="index"
         href="https://www.meituan.com/cate/1077489728/"
         class="content-item"
       >
         <div class="item-img">
-          <img :src="item.imgUrl" />
+          <img :src="item.img" />
         </div>
         <div class="item-info">
           <h4 class="title">{{ item.title }}</h4>
           <p class="sub-title">
-            {{ item.subTitle }}
+            {{ item.pos }}
           </p>
           <div class="price-info">
             <span class="current-price">
@@ -71,315 +81,84 @@ export default {
   data() {
     return {
       curType: 'all',
-      scenesContent: [
-        {
-          type: 'all',
-          list: [
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            }
-          ]
-        },
-        {
-          type: 'appointment',
-          list: [
-            {
-              imgUrl:
-                'https://p0.meituan.net/msmerchant/ebf59d1d4a11dcd4d242aa12442c9608121253.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            }
-          ]
-        },
-        {
-          type: 'beauty',
-          list: [
-            {
-              imgUrl:
-                'https://p0.meituan.net/merchantpic/0be5f931622c93a399c51fd38c8f31cb387384.jpg@240w_180h_1e_1c_1l|watermark=1&&r=2&p=9&x=2&y=2&relative=1&o=20|736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            }
-          ]
-        },
-        {
-          type: 'movie',
-          list: [
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            }
-          ]
-        },
-        {
-          type: 'travel',
-          list: [
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            },
-            {
-              imgUrl:
-                'https://p1.meituan.net/msmerchant/492ea4754d9b441f60d20d3952c47e321227835.jpg@736w_416h_1e_1c',
-              title: 'XCAKE艾蛋糕（天府广场店）',
-              subTitle: '蛋糕五选一，约3磅，方形',
-              price: 199,
-              oldPrice: '门市价¥349',
-              location: '天府广场/盐市口'
-            }
-          ]
-        }
-      ]
+      list: {
+        all: [],
+        part: [],
+        spa: [],
+        movie: [],
+        travel: []
+      }
     }
   },
+  // 需要在页面刚加载出来的时候显示一些初始化数据，这里的实现并不完美，画面有抖动，考虑采用SSR，
+  // 或者使用元素来占位置，如果使用SSR，那么keyword怎么传递？没想通，好像没有办法传递，也要发一次请求
   computed: {
-    curContent() {
-      return this.scenesContent.filter((item) => item.type === this.curType)[0]
+    curList() {
+      return this.list[this.curType]
+    }
+  },
+  async mounted() {
+    const self = this
+    const {
+      status,
+      data: { count, pois }
+    } = await self.$axios.get('/search/resultsByKeywords', {
+      params: {
+        keyword: '景点',
+        city: self.$store.state.geo.position.city
+      }
+    })
+    if (status === 200 && count > 0) {
+      const result = pois
+        .filter((item) => item.photos.length)
+        .map((item) => {
+          return {
+            title: item.name,
+            pos: item.type.split(';')[0],
+            price: 0,
+            img: item.photos[0].url,
+            url: '/'
+          }
+        })
+      self.list[self.curType] = result.slice(0, 6)
+    } else {
+      self.list[self.curType] = []
     }
   },
   methods: {
-    over(e) {
+    async over(e) {
+      const self = this
       const curTag = e.target.tagName.toLowerCase()
       if (curTag === 'dd') {
-        this.curType = e.target.getAttribute('type')
+        self.curType = e.target.getAttribute('type')
+        const keyword = e.target.getAttribute('type')
+        const {
+          status,
+          data: { count, pois }
+        } = await self.$axios.get('/search/resultsByKeywords', {
+          params: {
+            keyword,
+            city: self.$store.state.geo.position.city
+          }
+        })
+        if (status === 200 && count > 0) {
+          // 当后端的数据结构和前端不同的时候，可以先对其过滤再使用map重新进行映射，
+          // 开发的时候可以先使用自己的数据接口，之后再做映射即可
+          const result = pois
+            .filter((item) => item.photos.length)
+            .map((item) => {
+              return {
+                title: item.name,
+                pos: item.type.split(';')[0],
+                price: 0,
+                img: item.photos[0].url,
+                url: '/'
+              }
+            })
+          self.list[self.curType] = result.slice(0, 6)
+        } else {
+          self.list[self.curType] = []
+        }
       }
     }
   }
@@ -453,6 +232,13 @@ export default {
       border-radius: 4px;
     }
     .item-img {
+      background: url(//p0.meituan.net/travelcube/214b841….png);
+      background-size: cover;
+      background-position: 50% 50%;
+      max-width: 100%;
+      height: 208px;
+      margin-bottom: 11px;
+      cursor: pointer;
       img {
         width: 100%;
         height: 100%;
