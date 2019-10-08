@@ -1,0 +1,24 @@
+.m-city {
+  dl {
+    display: flex;
+
+    dt {
+      .title {
+        font-size: 16px;
+        color: #333;
+        font-weight: 500;
+      }
+    }
+
+    dd {
+      margin: 0 20px;
+      color: #666;
+      line-height: 22px;
+      cursor: pointer;
+
+      &:hover {
+        color: #222222;
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="index-container">
+  <div class="main">
     <m-banner class="m-banner clearfix"></m-banner>
     <m-scenes class="m-scenes"></m-scenes>
   </div>
@@ -18,15 +18,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.index-container {
-  width: 1190px;
-  margin: 0 auto;
-  .m-banner {
-    position: relative;
-  }
-  .m-scenes {
-    margin: 0 auto;
-    padding: 40px 0;
-  }
-}
+@import '../assets/css/index.scss';
 </style>

@@ -1,14 +1,8 @@
 <template>
   <div>
-    <header class="index-header">
-      <custom-header></custom-header>
-    </header>
-    <main class="index-main">
-      <nuxt />
-    </main>
-    <footer class="index-footer">
-      <custom-footer></custom-footer>
-    </footer>
+    <custom-header class="header"></custom-header>
+    <nuxt />
+    <custom-footer class="footer"></custom-footer>
   </div>
 </template>
 
@@ -22,11 +16,7 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
-.index-main {
-  background: #f8f8f8;
-}
-.index-footer {
-  background: #f8f8f8;
-}
+<style lang="scss">
+@import '../assets/css/footer.scss';
+@import '../assets/css/header.scss';
 </style>

@@ -1,0 +1,89 @@
+.page-changeCity {
+  width: 1190px;
+  box-sizing: border-box;
+  margin: 20px auto 0;
+  background-color: #fff;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+  min-height: 1000px;
+  padding: 20px;
+  margin-bottom: 100px;
+
+  .m-select {
+
+    .province,
+    .city {
+      cursor: pointer;
+      box-sizing: border-box;
+      position: relative;
+      font-size: 14px;
+      color: #666;
+
+      .el-input--suffix {
+        width: auto;
+
+        .el-input__inner {
+          border-radius: 4px;
+          width: 150px;
+          height: 40px;
+          box-sizing: border-box;
+          border: 1px solid #E5E5E5;
+
+          &::placeholder {
+            color: #666;
+          }
+        }
+      }
+    }
+
+    .city {
+      margin: 0 30px 0 10px;
+
+      .el-input.is-disabled .el-input__inner {
+        background-color: #fff;
+        cursor: not-allowed;
+      }
+    }
+
+    // .label {}
+
+    .el-autocomplete {
+      .el-input {
+        .el-input__inner {
+          padding-left: 10px;
+          width: 220px;
+          height: 40px;
+          border-radius: 4px;
+          border: 1px solid #E5E5E5;
+          margin-left: 10px;
+          font-size: 14px;
+          color: #666;
+          box-sizing: border-box;
+
+          &::placeholder {
+            color: #666;
+          }
+        }
+      }
+    }
+
+    .title {
+      display: inline-block;
+      font-size: 16px;
+      color: #333;
+      font-weight: 500;
+    }
+  }
+
+  .el-row {
+    padding-bottom: 20px;
+
+    &:after {
+      content: ' ';
+      height: 1px;
+      width: 100%;
+      border-bottom: 1px solid #E5E5E5;
+      padding-top: 20px;
+    }
+  }
+}

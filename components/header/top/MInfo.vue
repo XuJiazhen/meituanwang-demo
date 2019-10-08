@@ -3,7 +3,7 @@
     <div class="city">
       <span class="el-icon-location"></span>
       <span>{{ $store.state.geo.position.city }}</span>
-      <a href="/" class="changeCity">切换城市</a>
+      <a href="/changeCity" class="changeCity">切换城市</a>
       <div class="near-city">
         [
         <a href="/" class="city-guess active">新津县</a>
