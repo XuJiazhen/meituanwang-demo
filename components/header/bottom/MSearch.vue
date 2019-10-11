@@ -21,7 +21,7 @@
           <a
             v-for="(item, index) in $store.state.city.hotPlace.slice(0, 4)"
             :key="index"
-            href="/"
+            :href="'/product?keyword=' + encodeURIComponent(item.name)"
             >{{ item.name }}</a
           >
         </div>
@@ -35,12 +35,12 @@
       </div>
     </div>
     <div class="search-hotword">
-      <a href="/">大熊猫繁育研究基地</a>
-      <a href="/">成都欢乐谷</a>
-      <a href="/">成都武侯祠博物馆</a>
-      <a href="/">贤合庄卤味火锅</a>
-      <a href="/">成都海昌极地海洋公园</a>
-      <a href="/">成都海昌极地海洋公园</a>
+      <a
+        v-for="(item, index) in $store.state.city.hotPlace.slice(0, 7)"
+        :key="index"
+        :href="'/product?keyword=' + encodeURIComponent(item.name)"
+        >{{ item.name }}</a
+      >
     </div>
   </div>
 </template>

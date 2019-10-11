@@ -51,4 +51,32 @@ router.get('/resultsByKeywords', async (ctx) => {
     pois: status === 200 ? pois : []
   }
 })
+
+router.get('/products', async (ctx) => {
+  const keyword = ctx.query.keyword || '旅游'
+  const city = ctx.query.city || '北京'
+  const {
+    status,
+    data: { product, more }
+  } = await axios.get('http://cp-tools.cn/search/products', {
+    params: {
+      keyword,
+      city
+    }
+  })
+  // 使用 isAuthenticated() 验证是否为登录状态
+  if (status === 200) {
+    ctx.body = {
+      product,
+      more: ctx.isAuthenticated() ? more : [],
+      login: ctx.isAuthenticated()
+    }
+  } else {
+    ctx.body = {
+      product: {},
+      more: ctx.isAuthenticated() ? more : [],
+      login: ctx.isAuthenticated()
+    }
+  }
+})
 export default router
