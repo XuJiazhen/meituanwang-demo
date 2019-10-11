@@ -53,7 +53,7 @@ $ npm run dev
 - 产品列表页面排序逻辑暂未实现
 
 ### 项目截图
-
+![Screen Shot](https://github.com/XuJiazhen/meituanwang-demo/blob/master/Overview/1.png)
 
 
 
